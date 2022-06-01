@@ -7,7 +7,7 @@ const PedidosSchema = new Schema(
     id_carta: [
       { type: Schema.Types.ObjectId, ref: "cartas", required: true },
     ],
-    id_carta: [
+    id_mesa: [
       { type: Schema.Types.ObjectId, ref: "mesas", required: true },
     ],
     precio: { type: Number, required: false },

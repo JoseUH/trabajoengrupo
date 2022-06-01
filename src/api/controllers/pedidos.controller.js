@@ -1,5 +1,5 @@
 const { deleteFile } = require("../../middlewares/deleteFile");
-const Pedido = require("../models/pedidos.model.js");
+const Pedido = require("../models/pedidos.model");
 const HTTPSTATUSCODE = require("../../utils/httpStatusCode")
 
 
@@ -7,7 +7,7 @@ const HTTPSTATUSCODE = require("../../utils/httpStatusCode")
 const getAllPedidos = async (req, res, next) => {
   try {
     
-    const allPedidos = await Pedido.find().populate("cuadros");
+    const allPedidos = await Pedido.find().populate("id_carta").populate("id_mesa");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -62,7 +62,7 @@ const deletePedidos = async (req, res, next) => {
     }
   };
   
-  /* const patchPedido = async (req, res, next) => {
+  const patchPedido = async (req, res, next) => {
     try {
       const { id } = req.params;
   
@@ -91,6 +91,6 @@ const deletePedidos = async (req, res, next) => {
 
       return next(error);
     }
-  }; */
+  }; 
   
 module.exports = { getAllPedidos, getPedidosByID, createPedidos/*, patchPedido */,deletePedidos };
