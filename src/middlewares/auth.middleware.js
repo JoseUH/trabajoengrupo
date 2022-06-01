@@ -1,4 +1,4 @@
-//Requerimos la dependencia de jsonwebtoken;
+
 const jwt = require("jsonwebtoken");
 const HTTPSTATUSCODE = require("../utils/httpStatusCode");
 
