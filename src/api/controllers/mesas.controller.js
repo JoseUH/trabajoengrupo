@@ -35,7 +35,7 @@ const getMesaByID = async (req, res, next) => {
 
 const createMesas = async (req, res, next) => {
   try {
-    const newMesas = new Mesa(req.body);
+    const newMesas = new Cuadro(req.body);
     if (req.file) {
       newMesas.imagen = req.file.path;
     }

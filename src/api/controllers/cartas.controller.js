@@ -10,7 +10,7 @@ const getAllCartas = async (req, res, next) => {
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      cartas: allCartas,
+      Cartas: allCartas,
     });
   } catch (error) {
     return next(error);
@@ -25,7 +25,7 @@ const getCartasByID = async (req, res, next) => {
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
-      Carta: cartasByID,
+      Cartas: cartasByID,
     });
   } catch (error) {
     return next(error);
@@ -43,7 +43,7 @@ const createCartas = async (req, res, next) => {
     return res.json({
       status: 201,
       message: HTTPSTATUSCODE[201],
-      Carta: createdCartas,
+      Cartas: createdCartas,
     });
   } catch (error) {
     return next(error);
