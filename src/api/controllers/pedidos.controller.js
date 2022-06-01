@@ -1,5 +1,6 @@
 const { deleteFile } = require("../../middlewares/deleteFile");
 const Pedido = require("../models/pedidos.model");
+
 const HTTPSTATUSCODE = require("../../utils/httpStatusCode")
 
 
@@ -71,11 +72,12 @@ const deletePedidos = async (req, res, next) => {
       patchPedido._id = id;
 
       
-      const pedidosData= await Cartas.findById(id)
+      const pedidosData= await Pedido.findById(id);
 
-      patchPedido.id_carta =[...pedidosData.cuadros, ...patchPedido.cuadros]
+      patchPedido.id_carta =[...pedidosData.id_carta, ...patchPedido.id_carta];
+      patchPedido.id_mesa =[...pedidosData.id_mesa, ...patchPedido.id_mesa];
 
-      if (pedidosData.foto) {
+     /*  if (pedidosData.foto) {
         
         deleteFile(pedidosData.foto);
         }
@@ -83,7 +85,7 @@ const deletePedidos = async (req, res, next) => {
       if (req.file) {
         patchPedido.foto = req.file.path;
       }
-  
+   */
       const PedidoDB = await Pedido.findByIdAndUpdate(id, patchPedido);
       
       return res.status(200).json({ nuevo: patchPedido, vieja: PedidoDB });
@@ -93,4 +95,4 @@ const deletePedidos = async (req, res, next) => {
     }
   }; 
   
-module.exports = { getAllPedidos, getPedidosByID, createPedidos/*, patchPedido */,deletePedidos };
+module.exports = { getAllPedidos, getPedidosByID, createPedidos, patchPedido, deletePedidos };
