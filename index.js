@@ -5,8 +5,8 @@ const cloudinary=require("cloudinary").v2;
 const logger = require("morgan");
 
 
-const cuadrosRouter = require("./src/api/routes/cuadros.routes");
-const pintoresRouter = require("./src/api/routes/pintores.routes");
+
+const pedidosRouter = require("./src/api/routes/pedidos.routes");
 const userRouter = require("./src/api/routes/users.routes");
 
 dotenv.config();
@@ -48,8 +48,8 @@ server.use(cors({
 
 server.set("secretKey", JWT_SECRET)
 
-server.use("/cuadros", cuadrosRouter)
-server.use("/pintores", pintoresRouter);
+
+server.use("/pedidos", pedidosRouter);
 server.use("/users", userRouter);
 
 
