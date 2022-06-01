@@ -10,13 +10,13 @@ const {
   getPedidosByID,
   createPedidos,
   deletePedidos,
-  //patchPintor,
+  patchPedido,
 } = require("../controllers/pedidos.controller");
 
 router.get("/", getAllPedidos);
 router.get("/:id",  getPedidosByID);
 router.post("/",[isAuth], createPedidos);
 router.delete('/:id',[isAuth], deletePedidos);
-//router.patch('/:id',[isAuth],upload.single("foto"), patchPintor)
+router.patch('/:id',[isAuth]/*, upload.single("foto") */, patchPedido)
 
 module.exports = router;
