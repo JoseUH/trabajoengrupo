@@ -90,4 +90,21 @@ const deleteMesas = async (req, res, next) => {
     }
   };
 
-module.exports = { getAllMesas, getMesaByID, createMesas,patchMesa,deleteMesas};
+
+  const getMesaByZona = async (req, res, next) => {
+    const zoneMesa = req.params.zona;
+    try {
+      const mesaByZona = await Mesa.find({zona: zoneMesa});
+      return res.json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        Mesa: mesaByZona,
+      });
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  
+
+module.exports = { getAllMesas, getMesaByID, createMesas,patchMesa,deleteMesas,getMesaByZona};
