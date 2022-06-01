@@ -11,6 +11,7 @@ const cartasRouter = require("./src/api/routes/cartas.routes");
 
 const MesaRouter = require("./src/api/routes/mesas.routes");
 
+const pedidosRouter = require("./src/api/routes/pedidos.routes");
 
 const userRouter = require("./src/api/routes/users.routes");
 
@@ -58,6 +59,8 @@ server.use("/cartas", cartasRouter)
 
 
 server.use("/mesas", MesaRouter)
+
+server.use("/pedidos", pedidosRouter);
 
 
 server.use("/users", userRouter);
