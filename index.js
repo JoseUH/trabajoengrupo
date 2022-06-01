@@ -6,7 +6,8 @@ const logger = require("morgan");
 
 
 
-const pedidosRouter = require("./src/api/routes/pedidos.routes");
+const MesaRouter = require("./src/api/routes/mesas.routes");
+
 const userRouter = require("./src/api/routes/users.routes");
 
 dotenv.config();
@@ -49,7 +50,8 @@ server.use(cors({
 server.set("secretKey", JWT_SECRET)
 
 
-server.use("/pedidos", pedidosRouter);
+server.use("/mesas", MesaRouter)
+
 server.use("/users", userRouter);
 
 
