@@ -22,7 +22,7 @@ const getAllPedidos = async (req, res, next) => {
 const getPedidosByID = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const pedidosByID = await Pedido.findById(id);
+    const pedidosByID = await Pedido.findById(id).populate("id_carta").populate("id_mesa");
     return res.json({
       status: 200,
       message: HTTPSTATUSCODE[200],
@@ -36,7 +36,7 @@ const getPedidosByID = async (req, res, next) => {
 const createPedidos = async (req, res, next) => {
   try {
     const newPedidos = new Pedido(req.body);
-
+    console.log(req.body);
     if (req.file) {
       newPedidos.foto = req.file.path;
     }

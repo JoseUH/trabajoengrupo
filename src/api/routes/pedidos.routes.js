@@ -15,7 +15,7 @@ const {
 
 router.get("/", getAllPedidos);
 router.get("/:id",  getPedidosByID);
-router.post("/",[isAuth], createPedidos);
+router.post("/"/* ,[isAuth] */, createPedidos);
 router.delete('/:id',[isAuth], deletePedidos);
 router.patch('/:id',[isAuth]/*, upload.single("foto") */, patchPedido)
 
