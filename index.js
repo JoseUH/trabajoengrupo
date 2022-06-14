@@ -6,10 +6,10 @@ const logger = require("morgan");
 
 
 
-const cartasRouter = require("./src/api/routes/cartas.routes");
+const projectsRouter = require("./src/api/routes/projects.routes");
 
 
-const MesaRouter = require("./src/api/routes/mesas.routes");
+const HerramientaRouter = require("./src/api/routes/herramientas.routes");
 
 const pedidosRouter = require("./src/api/routes/pedidos.routes");
 
@@ -55,10 +55,10 @@ server.use(cors({
 server.set("secretKey", JWT_SECRET)
 
 
-server.use("/cartas", cartasRouter)
+server.use("/projects", projectsRouter)
 
 
-server.use("/mesas", MesaRouter)
+server.use("/herramientas", HerramientaRouter)
 
 server.use("/pedidos", pedidosRouter);
 

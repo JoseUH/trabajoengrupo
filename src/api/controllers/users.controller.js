@@ -69,4 +69,73 @@ const logout = (req, res, next) => {
   }
 };
 
-module.exports = { login, register, logout };
+const getAllUsers = async (req, res, next) => {
+  try {
+    const allUsers = await User.find();
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Users: allUsers,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+
+const getUsersByID = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const UsersByID = await User.findById(id);
+    return res.json({
+      status: 200,
+      message: HTTPSTATUSCODE[200],
+      Users: UsersByID,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+
+const deleteUsers = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+  
+      const UserBorrado = await User.findByIdAndDelete(id);
+  
+      return res.status(200).json(UserBorrado);
+    } catch (error) {
+      return next(error);
+    }
+  };
+  
+  const patchUser = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+  
+      const patchUser = new User(req.body);
+  
+      patchUser._id = id;
+
+      const UserData= await User.findById(id)
+
+      // patchUser.autor =[...cuadroData.autor, ...patchCuadro.autor]
+
+      if (UserData.imagen) {
+        deleteFile(UserData.imagen);
+        }
+
+      if (req.file) {
+        patchUser.imagen = req.file.path;
+      }
+  
+      const UserDB = await User.findByIdAndUpdate(id, patchUser);
+      
+      return res.status(200).json({ nuevo: patchUser, vieja: UserDB });
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+module.exports = { login, register, logout, getAllUsers, getUsersByID, deleteUsers, patchUser };
